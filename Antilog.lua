@@ -150,7 +150,7 @@ end)
 settings:Button('Save Config', function()
     if isfolder('Axteric') and isfile('Axteric/Config.json') then
         local tbl = services.http:JSONDecode(readfile('Axteric/Config.json'))
-        tbl.Games[game.Placeid] = {
+        tbl.Games['Antilog'] = {
             Baits = amt_of_baits
         }
         writefile('Axteric/Config.json', services.http:JSONEncode(tbl))
@@ -159,7 +159,7 @@ settings:Button('Save Config', function()
         if not isfile('Axteric/Config.json') then
             local tbl = {
                 Games = {
-                    [game.PlaceId] = {
+                    ['Antilog'] = {
                         Baits = amt_of_baits
                     }
                 }
