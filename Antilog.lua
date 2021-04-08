@@ -122,7 +122,7 @@ end)
 
 -- Settings --
 local settings = window:CreateTab('Settings')
-local amountofbaits = window:Slider('Amount Of Baits', 1, 7, 4, function(value)
+local amountofbaits = settings:Slider('Amount Of Baits', 1, 7, 4, function(value)
     amt_of_baits = value
 end)
 settings:Button('Load Config', function()
