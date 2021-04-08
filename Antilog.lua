@@ -74,6 +74,10 @@ local window = lib:Init('Dollhouse Roleplay', {
 	CustomMouse = true	
 })
 
+local services = {
+    http = game:GetService("HttpService")
+}
+
 
 -- Anti-Log --
 
@@ -113,3 +117,55 @@ local play = antilog:Box('Asset ID', function(id)
 	boombox.Parent = plr.Character
 	boombox['Remote']:FireServer("PlaySong", url)
 end)
+
+------------0
+
+-- Settings --
+local settings = window:CreateTab('Settings')
+local amountofbaits = window:Slider('Amount Of Baits', 1, 7, 4, function(value)
+    amt_of_baits = value
+end)
+settings:Button('Load Config', function()
+    if isfolder('Axteric') and isfile('Axteric/Config.json') then
+        local config = services.http:JSONDecode(readfile('Axteric/Config.json'))
+        
+        local config_for_game = config.Games['Antilog']
+        local baits = config_for_game['Baits']
+
+        amountofbaits:SetValue(tonumber(baits))
+    else
+        if not isfolder('Axteric') then makefolder('Axteric') end
+        if not isfile('Axteric/Config.json') then
+            local tbl = {
+                Games = {
+                    [game.PlaceId] = {
+                        Baits = amt_of_baits
+                    }
+                }
+            }
+            writefile('Axteric/Config.json', services.http:JSONEncode(tbl))
+        end
+    end
+end)
+settings:Button('Save Config', function()
+    if isfolder('Axteric') and isfile('Axteric/Config.json') then
+        local tbl = services.http:JSONDecode(readfile('Axteric/Config.json'))
+        tbl.Games[game.Placeid] = {
+            Baits = amt_of_baits
+        }
+        writefile('Axteric/Config.json', services.http:JSONEncode(tbl))
+    else
+        if not isfolder('Axteric') then makefolder('Axteric') end
+        if not isfile('Axteric/Config.json') then
+            local tbl = {
+                Games = {
+                    [game.PlaceId] = {
+                        Baits = amt_of_baits
+                    }
+                }
+            }
+            writefile('Axteric/Config.json', services.http:JSONEncode(tbl))
+        end
+    end
+end)
+--------------
