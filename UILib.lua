@@ -21,7 +21,7 @@ local minmaxpercent = function(min, max, percent)
 	return ((max - min) * percent) + min
 end
 local percentminmax = function(min, max, percent)
-	return (percent / (max - min)) + min
+	return (percent / (max - min))
 end
 
 
