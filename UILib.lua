@@ -18,7 +18,7 @@ local constants = {
 local mouse = constants.plr:GetMouse()
 
 local minmaxpercent = function(min, max, percent)
-	return (max - min) * percent
+	return ((max - min) * percent) + min
 end
 local percentminmax = function(min, max, percent)
 	return (percent / (max - min)) + min
