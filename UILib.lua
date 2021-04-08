@@ -468,10 +468,14 @@ function Axteric:Init(name, config)
 	if config.CustomMouse then
 		local image = Drawing.new('Image')
 		local icon = config.MouseImage or 'https://cdn.discordapp.com/attachments/829200583079886868/829510673783324723/qf8FGesexT1Hit34SHBCf-2JdMIQZTJ9Esy7tdbKAAndWrqE7I5vAUCcKqzsxKeb0tFn97K1U8iTw1mcBRFgsxd42jZH62qIPto.png'
-		writefile('axtericmouseicon.png', syn.request({Url = icon}).Body)
+		
+        if not isfolder('Axteric') then
+            makefolder('Axteric')
+        end
+        writefile('Axteric/mouseicon.png', syn.request({Url = icon}).Body)
 
 		local mouseicon = Drawing.new("Image")
-		mouseicon.Data = readfile('axtericmouseicon.png')
+		mouseicon.Data = readfile('Axteric/mouseicon.png')
 		mouseicon.Size = Vector2.new(20,20)
 		mouseicon.Transparency = 0.9
 		mouseicon.Visible = Frame.Visible
