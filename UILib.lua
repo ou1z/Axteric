@@ -411,7 +411,7 @@ function Axteric:Init(name, config)
 			BoxName.Position = UDim2.new(0, 0, 0.5, 0)
 			BoxName.Size = UDim2.new(0, 72, 0, 38)
 			BoxName.Font = Enum.Font.SourceSans
-			BoxName.Text = "Asset ID"
+			BoxName.Text = tostring(name)
 			BoxName.TextColor3 = Color3.fromRGB(255, 255, 255)
 			BoxName.TextSize = 14.000
 			BoxName.TextStrokeTransparency = 0.000
