@@ -433,8 +433,10 @@ function Axteric:Init(name, config)
 				Connections = {}
 			}
 
-			self.Connections.focuslost = Box.FocusLost:Connect(function()
-				callback(Box.Text)
+			self.Connections.focuslost = Box.FocusLost:Connect(function(enter)
+				if enter then
+					callback(Box.Text)
+				end
 			end)
 
 			function self:Activate(value)
