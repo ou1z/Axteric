@@ -138,7 +138,7 @@ settings:Button('Load Config', function()
         if not isfile('Axteric/Config.json') then
             local tbl = {
                 Games = {
-                    [game.PlaceId] = {
+                    ['Antilog'] = {
                         Baits = amt_of_baits
                     }
                 }
